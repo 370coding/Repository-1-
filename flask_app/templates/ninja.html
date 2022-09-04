@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: rgb(228, 226, 226);
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+        }
+
+        .formninja {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            justify-content: space-evenly;
+            width: 240px;
+            height: 300px;
+            background-color: rgb(58, 61, 65);
+        }
+
+        #dropdown{
+            gap: 0px;
+            width: 100px;
+            border-style: hidden;
+        }
+
+        .createbtn{
+            width: 100px;
+            border-style: hidden;
+            background-color: rgb(26, 26, 212);
+        }
+
+        h2 {
+            color: rgb(0, 0, 255);
+        }
+
+    </style>
+    <title>Ninjas</title>
+</head>
+<body>
+    <h1>Add a Ninja</h1>
+    <div class="container">
+        <form action="/create_ninja" method="post" class="formninja">
+            <h2>New Ninja</h2>
+            <select name="dojo_id" id="dropdown">
+                {% for a_dojo in all_the_dojos %}
+                <option value="{{a_dojo.id}}">{{a_dojo.name}}</option>
+                {% endfor %}
+            </select>
+            <label>First Name: <input type="text" name="first_name"></label>
+            <label>Last Name: <input type="text" name="last_name"></label>
+            <input type="submit" value="Create Ninja" class="createbtn">
+        </form>
+    </div>
+</body>
+</html>
